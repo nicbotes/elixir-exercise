@@ -53,7 +53,7 @@ There is no defined logic to what first name should go with what last name, job 
 Create a new endpoint(s) to provide data about salaries:
 
 * Minimum, Maximum, and Average salary in a given country
-* Average salary per job title
+* Average salary per job title (doesn't have to be per country)
 
 ## How to run the existing application
 
