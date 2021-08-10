@@ -50,7 +50,7 @@ After creating the resource please add the logic to seed 10.000 employees into t
 Create a new endpoint(s) to provide data about salaries:
 
 * Minimum, Maximum, and Average salary in a given country
-* Average salary per job title
+* Average salary per job title (doesn't have to be per country)
 
 ## How to run the existing application
 
