@@ -40,7 +40,7 @@ defmodule ExerciseWeb.CurrencyControllerTest do
       conn = get(conn, Routes.currency_path(conn, :show, id))
 
       assert %{
-               "id" => id,
+               "id" => ^id,
                "code" => "some code",
                "name" => "some name",
                "symbol" => "some symbol"
@@ -66,7 +66,7 @@ defmodule ExerciseWeb.CurrencyControllerTest do
       conn = get(conn, Routes.currency_path(conn, :show, id))
 
       assert %{
-               "id" => id,
+               "id" => ^id,
                "code" => "some updated code",
                "name" => "some updated name",
                "symbol" => "some updated symbol"
