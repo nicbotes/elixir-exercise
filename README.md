@@ -43,7 +43,9 @@ There are a few requirements for the info captured by the `employee` resource:
 * It should have a salary
 * It should have a currency in which the salary is paid
 
-After creating the resource please add the logic to seed 10.000 employees into the database. Seed data lives on the `.\repo\seeds.exs` file.
+After creating the resource please add the logic to seed 10 000 employees into the database. Seed data lives on the `.\repo\seeds.exs` file.
+
+There is no defined logic to what first name should go with what last name, job title, country etc. Assign them as you see fit.
 
 ### 🧮 3.Implement an endpoint to provide salary metrics about employees
 
