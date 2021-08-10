@@ -62,6 +62,8 @@ If you wish to run the application natively you will need the following:
 * Elixir >= 1.7
 * Postgres >= 11.9
 
+Check out the `.tool-versions` file for a concrete version combination we ran the application with. Using [asdf](https://github.com/asdf-vm/asdf) you could install their plugins and them via `asdf install`.
+
 ### If you use Visual Studio Code with the Remote Containers extension
 
 There is a `.devcontainer` folder that should allow you to open the project and develop without the need to have Elixir, Phoenix or Postgres installed in your system.
