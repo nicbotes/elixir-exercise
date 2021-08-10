@@ -44,10 +44,10 @@ defmodule Exercise.Countries do
 
   ## Examples
 
-      iex> get_currency!("EUR")
+      iex> get_currency_by_code!("EUR")
       %Currency{}
 
-      iex> get_currency!("XYZ")
+      iex> get_currency_by_code!("XYZ")
       ** (Ecto.NoResultsError)
 
   """
@@ -57,7 +57,7 @@ defmodule Exercise.Countries do
         where: c.code == ^code
       )
 
-    Repo.one(query)
+    Repo.one!(query)
   end
 
   @doc """
