@@ -13,6 +13,7 @@ If you have any questions, don't hesitate to reach out directly to paulo@remote.
 ## Expectations
 
 * It should be production-ready code - the code will show us how you ship things to production and be a mirror of your craft.
+  * Just to be extra clear: We don't actually expect you to deploy it somewhere or build a release. It's meant as a statement regarding the quality of the solution.
 * Take whatever time you need - we won't look at start/end dates, you have a life besides this and we respect that!
 
 ## About the challenge
