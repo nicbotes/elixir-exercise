@@ -38,7 +38,7 @@ defmodule ExerciseWeb.CountryControllerTest do
       conn = get(conn, Routes.country_path(conn, :show, id))
 
       assert %{
-               "id" => id,
+               "id" => ^id,
                "code" => "some code",
                "name" => "some name"
              } = json_response(conn, 200)["data"]
@@ -60,7 +60,7 @@ defmodule ExerciseWeb.CountryControllerTest do
       conn = get(conn, Routes.country_path(conn, :show, id))
 
       assert %{
-               "id" => id,
+               "id" => ^id,
                "code" => "some updated code",
                "name" => "some updated name"
              } = json_response(conn, 200)["data"]
