@@ -53,7 +53,7 @@ country_data = [
   ["New Zealand", "NZL", "NZD"],
   ["Portugal", "PRT", "EUR"],
   ["Spain", "ESP", "EUR"],
-  ["Switzerlan", "CHE", "CHF"],
+  ["Switzerland", "CHE", "CHF"],
   ["United Kingdom", "GBR", "GBP"],
   ["United States", "USA", "USD"]
 ]
