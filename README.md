@@ -20,7 +20,7 @@ If you have any questions, don't hesitate to reach out directly to paulo@remote.
 
 You will be working on an existing [Phoenix](https://www.phoenixframework.org/) application that needs some functionality added.
 
-This exercise is requires you to:
+This exercise requires you to:
 
 1. 🔧 Fix existing bugs in the application
 2. 📑 Create an employee resource and implement default CRUD operations
@@ -30,7 +30,7 @@ This exercise is requires you to:
 
 Unfortunately the application is not behaving as expected and it can use some fixing. Find the issues and correct them.
 
-> 💡 Tests will help you finding what is broken
+> 💡 Tests will help you find what is broken
 
 ### 📑 2.Create an employee resource and implement default CRUD operations
 
