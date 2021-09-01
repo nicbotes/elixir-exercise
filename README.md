@@ -20,7 +20,7 @@ If you have any questions, don't hesitate to reach out directly to paulo@remote.
 
 You will be working on an existing [Phoenix](https://www.phoenixframework.org/) application that needs some functionality added.
 
-This exercise is requires you to:
+This exercise requires you to:
 
 1. 🔧 Fix existing bugs in the application
 2. 📑 Create an employee resource and implement default CRUD operations
@@ -30,7 +30,7 @@ This exercise is requires you to:
 
 Unfortunately the application is not behaving as expected and it can use some fixing. Find the issues and correct them.
 
-> 💡 Tests will help you finding what is broken
+> 💡 Tests will help you find what is broken
 
 ### 📑 2.Create an employee resource and implement default CRUD operations
 
@@ -47,6 +47,8 @@ There are a few requirements for the info captured by the `employee` resource:
 After creating the resource please add the logic to seed 10 000 employees into the database. Seed data lives on the `.\repo\seeds.exs` file.
 
 There is no defined logic to what first name should go with what last name, job title, country etc. Assign them as you see fit.
+
+You do not need to add pagination for the index endpoint.
 
 ### 🧮 3.Implement an endpoint to provide salary metrics about employees
 

@@ -35,7 +35,7 @@ currency_data = [
 for currency <- currency_data do
   [name, code, symbol] = currency
 
-  Countries.create_currency(%{
+  {:ok, _currency} = Countries.create_currency(%{
     name: name,
     code: code,
     symbol: symbol
@@ -62,7 +62,7 @@ for country <- country_data do
   [name, code, currency_code] = country
   currency = Countries.get_currency_by_code!(currency_code)
 
-  Countries.create_country(%{
+  {:ok, _country} = Countries.create_country(%{
     name: name,
     code: code,
     currency_id: currency.id
