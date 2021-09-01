@@ -48,7 +48,7 @@ After creating the resource please add the logic to seed 10 000 employees into t
 
 There is no defined logic to what first name should go with what last name, job title, country etc. Assign them as you see fit.
 
-You do not need to add pagination for the index end point.
+You do not need to add pagination for the index endpoint.
 
 ### 🧮 3.Implement an endpoint to provide salary metrics about employees
 
