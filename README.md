@@ -8,7 +8,7 @@ In this exercise you're asked to implement some features in an existing Phoenix 
 
 > 💡 The Phoenix application is an API
 
-If you have any questions, don't hesitate to reach out directly to paulo@remote.com.
+If you have any questions, don't hesitate to reach out directly to code_exercise@remote.com.
 
 ## Expectations
 
