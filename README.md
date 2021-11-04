@@ -61,6 +61,14 @@ Create a new endpoint(s) to provide data about salaries:
 * Minimum, Maximum, and Average salary in a given country
 * Average salary per job title for all the employees with a given job title
 
+### When you're done
+
+- Complete the "Implementation Details" section at the bottom of this README.
+- Open a Pull Request in this repo and send the link to code_exercise@remote.com.
+- You can also send some feedback about this exercise. Was it too short/big? Boring? Let us know!
+
+---
+
 ## How to run the existing application
 
 ### Using Elixir natively
@@ -101,3 +109,7 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 * [Elixir Website](https://elixir-lang.org/)
 * [Elixir Guides](https://elixir-lang.org/getting-started/introduction.html)
 * [Elixir Docs](https://elixir-lang.org/docs.html)
+
+## Implementation details
+
+This section is for you to fill in with any decisions you made that may be relevant. You can also change this README to fit your needs.
