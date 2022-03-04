@@ -58,8 +58,8 @@ You do not need to add pagination for the index endpoint.
 
 Create a new endpoint(s) to provide data about salaries:
 
-* Minimum, Maximum, and Average salary in a given country
-* Average salary per job title for all the employees with a given job title
+* Given a country, the minimum, maximum, and average salary in that country.
+* Given a job title, the average salary for all the employees with that job title.
 
 ### When you're done
 
