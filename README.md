@@ -14,7 +14,7 @@ If you have any questions, don't hesitate to reach out directly to code_exercise
 
 * It should be production-ready code - the code will show us how you ship things to production and be a mirror of your craft.
   * Just to be extra clear: We don't actually expect you to deploy it somewhere or build a release. It's meant as a statement regarding the quality of the solution.
-* Take whatever time you need - we won't look at start/end dates, you have a life besides this and we respect that!
+* Take whatever time you need - we won’t look at start/end dates, you have a life besides this and we respect that! Moreover, if there is something you had to leave incomplete or there is a better solution you would implement but couldn’t due to personal time constraints, please try to walk us through your thought process or any missing parts, using the “Implementation Details” section below.
 
 ## About the challenge
 
