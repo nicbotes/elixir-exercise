@@ -97,7 +97,7 @@ No matter which method you chose to run your application the commands to start t
 * Create and migrate your database with `mix ecto.setup`
 * Start Phoenix endpoint with `mix phx.server`
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Now you can visit [`localhost:4000/api/currencies`](http://localhost:4000/api/currencies) from your browser, to see that everything works.
 
 > 💡 An `env` directory is provided along with values for environment variables for running the application with dev and test settings. Feel free to use whatever method you prefer to set environment variables.
 
