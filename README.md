@@ -72,15 +72,13 @@ Create a new endpoint(s) to provide data about salaries:
 
 ## How to run the existing application
 
-### Using Elixir natively
+To run the application you will need the following:
 
-If you wish to run the application natively you will need the following:
-
-* Phoenix >= 1.5.9
-* Elixir >= 1.7
+* Elixir 1.15.5
+* Erlang 26.0.2
 * Postgres >= 11.9
 
-Check out the `.tool-versions` file for a concrete version combination we ran the application with. Using [asdf](https://github.com/asdf-vm/asdf) you could install their plugins and them via `asdf install`.
+Check out the `.tool-versions` file for a concrete version combination we ran the application with. Using [asdf](https://github.com/asdf-vm/asdf) you can install their plugins and then run `asdf install`.
 
 ### Starting the application
 
