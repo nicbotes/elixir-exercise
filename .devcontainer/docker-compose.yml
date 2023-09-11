@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   exercise:
-    image: papereira/devcontainer-elixir-phoenix:1.5.9-alpine
+    image: hexpm/elixir:1.15.5-erlang-26.0.2-alpine-3.18.2
     volumes:
       - ../:/workspace
       - ~/.ssh:/home/vscode/.ssh:ro
