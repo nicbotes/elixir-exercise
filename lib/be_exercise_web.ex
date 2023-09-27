@@ -23,7 +23,10 @@ defmodule ExerciseWeb do
 
       import Plug.Conn
       import ExerciseWeb.Gettext
+
       alias ExerciseWeb.Router.Helpers, as: Routes
+
+      unquote(verified_routes())
     end
   end
 
@@ -65,7 +68,21 @@ defmodule ExerciseWeb do
 
       import ExerciseWeb.ErrorHelpers
       import ExerciseWeb.Gettext
+
       alias ExerciseWeb.Router.Helpers, as: Routes
+
+      unquote(verified_routes())
+    end
+  end
+
+  def static_paths, do: ~w(assets fonts images favicon.ico robots.txt)
+
+  def verified_routes do
+    quote do
+      use Phoenix.VerifiedRoutes,
+        endpoint: ExerciseWeb.Endpoint,
+        router: ExerciseWeb.Router,
+        statics: ExerciseWeb.static_paths()
     end
   end
 

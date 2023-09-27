@@ -28,6 +28,8 @@ defmodule ExerciseWeb.ConnCase do
 
       # The default endpoint for testing
       @endpoint ExerciseWeb.Endpoint
+
+      use ExerciseWeb, :verified_routes
     end
   end
 
