@@ -108,3 +108,17 @@ Now you can visit [`localhost:4000/api/currencies`](http://localhost:4000/api/cu
 ## Implementation details
 
 This section is for you to fill in with any decisions you made that may be relevant. You can also change this README to fit your needs.
+
+### Intro
+Hi there, 
+
+Thanks for taking the time to review this home assignment. I'm new to Elixir and Phoenix but have read there docs and have tried to apply best practice. I've explained my thinking below in the hopes that it I can get more rich feedback while learning.
+
+### Task 1
+My thinking here was to follow elixir practices:
+- Documentation of the convert function. I followed similar copy used in `h File.read`
+- Simple approach using a case statement and pattern matching to return the tuple and get the test passing.
+- I decided to rather handle a nil (or other non-numeric types) `amount` input by returning an error tuple. Elixir docs describe "let it crash" being commonplace. However, in this case, I thought an amount field could be undefined so I have handled the case and updated the test suite accordingly.
+- I added a few more data points for the testing. This may be 
+
+

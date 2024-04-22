@@ -6,8 +6,39 @@ defmodule Exercise.Services.CurrencyConverter do
   and will use fixed conversion rates that will most likely not be the correct ones.
   """
 
-  def convert(from, to, amount) do
-    rates()["#{to}#{from}"] * amount
+  @doc """
+  Converts an amount from one currency to another using a predefined exchange rate.
+
+  ## Parameters
+  - `from`: The currency code (as a string) you are converting from.
+  - `to`: The currency code (as a string) you are converting to.
+  - `amount`: The numeric amount to be converted.
+
+  Returns {:ok, converted_amount} in case of success, {:error, reason} otherwise.
+
+  Typical error reasons:
+  - `unsupported currencies conversion` when the conversion fails due to an undefined conversion rate.
+  - `id argument `amount`. Must be a numeric value.` when the amount is non-numeric.
+
+  ## Examples
+
+      iex> Exercise.Services.CurrencyConverter.convert("USD", "GBP", 100)
+      {:ok, 73.0}
+
+      iex> Exercise.Services.CurrencyConverter.convert("USD", "INR", 100)
+      {:error, "unsupported currencies conversion"}
+  """
+  def convert(from, to, amount) when is_number(amount) do
+    rate_conversion_key = "#{from}#{to}"
+
+    case rates()[rate_conversion_key] do
+      rate when is_number(rate) -> {:ok, amount * rate}
+      nil -> {:error, "unsupported currencies conversion"}
+    end
+  end
+
+  def convert(_, _, _amount) do
+    {:error, "invalid argument `amount`. Must be a numeric value."}
   end
 
   defp rates do
