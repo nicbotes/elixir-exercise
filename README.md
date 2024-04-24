@@ -114,11 +114,19 @@ Hi there,
 
 Thanks for taking the time to review this home assignment. I'm new to Elixir and Phoenix but have read there docs and have tried to apply best practice. I've explained my thinking below in the hopes that it I can get more rich feedback while learning.
 
-### Task 1
+### Task 1 Notes
 My thinking here was to follow elixir practices:
 - Documentation of the convert function. I followed similar copy used in `h File.read`
 - Simple approach using a case statement and pattern matching to return the tuple and get the test passing.
 - I decided to rather handle a nil (or other non-numeric types) `amount` input by returning an error tuple. Elixir docs describe "let it crash" being commonplace. However, in this case, I thought an amount field could be undefined so I have handled the case and updated the test suite accordingly.
 - I added a few more data points for the testing. This may be 
 
+### Task 2 Notes
+- Assumption: it's quite common for people to be paid in a different currency to that of their country of residence, due to either employer or employee preference.
+- I used the Json generator for the Talent context but then noticed the current codebase followed a different pattern, so I adapted the solution to follow the existing style.
+- currencies and countries are bounded. so the selects are ok
+- data integrity, enforcing country_id and currency_id to be valid and set.
 
+TODO:
+- task3 endpoints
+- add readme details. 

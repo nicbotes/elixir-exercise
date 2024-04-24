@@ -21,4 +21,11 @@ defmodule ExerciseWeb.FallbackController do
     |> put_view(ExerciseWeb.ErrorView)
     |> render(:"404")
   end
+
+  def call(conn, %Ecto.NoResultsError{}) do
+    conn
+    |> put_status(:not_found)
+    |> put_view(ExerciseWeb.ErrorView)
+    |> render(:"404")
+  end
 end

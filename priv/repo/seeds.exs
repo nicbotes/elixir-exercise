@@ -9,66 +9,35 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
-# 
-# The code below demonstrates initial data insertion for currencies and countries. 
+#
+# The code below demonstrates initial data insertion for currencies and countries.
 # Please feel free to update the code if you consider it necessary.
 
+Code.require_file("fake_data.ex", __DIR__)
+Code.require_file("seed.ex", __DIR__)
+alias Exercise.Repo.Seed
 
-alias Exercise.Countries
+{time_in_microseconds, _result} = :timer.tc(fn ->
+  {:ok, currency_ids} = Seed.currencies!()
+  {:ok, country_ids} = Seed.countries!()
 
-# Seed the 8 supported currencies
-# Euro (EUR)
-# UK Pound Sterling (GBP)
-# Australian Dollar (AUD)
-# New Zealand Dollar (NZD)
-# Unites States Dollar (USD)
-# Canadian Dollar (CAD)
-# Swiss Franc (CHF)
-# Japanese Yen (JPY)
-currency_data = [
-  ["European Euro", "EUR", "€"],
-  ["United Kingdom Pound Sterling", "GBP", "£"],
-  ["Australian Dollar", "AUD", "$"],
-  ["New Zealand Dollar", "NZD", "$"],
-  ["United States Dollar", "USD", "$"],
-  ["Canadian Dollar", "CAD", "$"],
-  ["Swiss Franc", "CHF", "¥"],
-  ["Japanese Yen", "JPY", "CHF"]
-]
+  Seed.generate_bulk_employee_dataset(country_ids, currency_ids)
+  |> Seed.bulk_insert_employees()
+end)
 
-for currency <- currency_data do
-  [name, code, symbol] = currency
+import Ecto.Query, warn: false
+seed_employee_count = from(e in Exercise.Talent.Employee, select: max(e.id)) |> Exercise.Repo.one
+seed_country_count = from(e in Exercise.Countries.Country, select: max(e.id)) |> Exercise.Repo.one
+seed_currency_count = from(e in Exercise.Countries.Currency, select: max(e.id)) |> Exercise.Repo.one
 
-  {:ok, _currency} = Countries.create_currency(%{
-    name: name,
-    code: code,
-    symbol: symbol
-  })
-end
+IO.puts(~s"""
+\n\n
+Seeding Report
+--------------
+Countries:    #{seed_country_count}
+Currencies:   #{seed_currency_count}
+Employees:    #{seed_employee_count}
+Time taken:   #{round(time_in_microseconds / 1_000)} ms
 
-# Seed the 12 supported countries
-country_data = [
-  ["Australia", "AUS", "AUD"],
-  ["Canada", "CAN", "CAD"],
-  ["France", "FRA", "EUR"],
-  ["Japan", "JPN", "JPY"],
-  ["Italy", "ITA", "EUR"],
-  ["Liechtenstein", "LIE", "CHF"],
-  ["New Zealand", "NZL", "NZD"],
-  ["Portugal", "PRT", "EUR"],
-  ["Spain", "ESP", "EUR"],
-  ["Switzerland", "CHE", "CHF"],
-  ["United Kingdom", "GBR", "GBP"],
-  ["United States", "USA", "USD"]
-]
-
-for country <- country_data do
-  [name, code, currency_code] = country
-  currency = Countries.get_currency_by_code!(currency_code)
-
-  {:ok, _country} = Countries.create_country(%{
-    name: name,
-    code: code,
-    currency_id: currency.id
-  })
-end
+Seeding Complete.
+""")
