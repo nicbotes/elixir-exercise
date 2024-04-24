@@ -112,10 +112,11 @@ defmodule Exercise.Talent do
     query = from(e in Employee, where: e.job_title == ^field, select: avg(e.salary))
 
     stats = %{
-        average: Repo.one(query),
+      search: %{term: field, on: :job_title},
+      average: Repo.one(query),
     }
 
-    {:ok, %{"#{field}" => stats}}
+    {:ok, stats}
   rescue
     exception in Ecto.QueryError ->
       {:error, exception.message}
@@ -127,12 +128,13 @@ defmodule Exercise.Talent do
                 where: c.code == ^country_code)
 
     stats = %{
+      search: %{term: country_code, on: :country},
       maximum: Repo.aggregate(query, :max, :salary),
       minimum: Repo.aggregate(query, :min, :salary),
       average: Repo.aggregate(query, :avg, :salary),
     }
 
-    {:ok, %{"#{country_code}" => stats}}
+    {:ok, stats}
   rescue
     exception in Ecto.QueryError ->
       {:error, exception.message}
