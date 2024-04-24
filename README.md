@@ -148,9 +148,9 @@ The `seeds.exs` script was refactored to separate out concerns of
 ### Feedback
 Hi there, 
 
-Thanks for taking the time to review this home assignment. I'm new to Elixir and Phoenix but have read there docs and have tried to apply best practice. I've explained my thinking below in the hopes that it I can get more rich feedback while learning. Please share on the PR directly if you are willing. I'd really appreciate it.
+Thanks for taking the time to review this take home assignment. I'm new to Elixir and Phoenix but have read the docs and have tried to apply best practice. In the hopes of getting richer feedback while learning, I've explained my thinking below. Please share on the PR directly if you are willing. I'd really appreciate it.
 
-The assigment was a good forcing function to learn Elixir and Phoenix concepts. It gives me a better understanding of the tech stack I'd be joining, rather than only assessing technical ability in an abstract way. The tasks cover the basics of software dev activities. This has been a good way for me to get a lay of the land of the framework.
+The assigment was a good forcing function to learn Elixir and Phoenix concepts. It gives me a better understanding of the tech stack I'd be joining, rather than only assessing technical ability in an abstract way. The tasks cover the basics of software dev activities and has been a good way for me to get a lay of the land of the framework.
 
 ### Task 1 Notes
 My thinking here was to follow elixir practices:
