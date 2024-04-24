@@ -106,13 +106,51 @@ Now you can visit [`localhost:4000/api/currencies`](http://localhost:4000/api/cu
 * [Elixir Docs](https://elixir-lang.org/docs.html)
 
 ## Implementation details
+### Not complete
+All Tasks are complete, but improvements lie in:
+- Tests are mainly on the happy path only. I didn't find coverage reporting and I was tripping myself up on the edge cases and ExUnit.
+- Inconsistent formatting and patterns. For example, sometimes I used "verified routes" rather than a route path while I was learning. I am not going to revisit this.
 
-This section is for you to fill in with any decisions you made that may be relevant. You can also change this README to fit your needs.
+### Domain modelling
+Following Domain-driven design principles in the context of Remote.com's operations.
 
-### Intro
+Contexts setup.
+- Countries
+  - Countries
+  - Currencies
+- [*New] Talent
+  - Employee
+
+To explain the thinking future, the separation of concerns can be more easily seen with some illustrative use cases:
+`Countries`
+- Responsibilities: Managing data related to countries, currencies, tax rates, and labour laws.
+- Justification: This context is essential for any global system dealing with international operations. Managing country-specific data separately makes the system flexible and extensible, allowing easy updates to laws, currencies, and other locale-specific data without impacting other parts of the system.
+`Talent`
+- Responsibilities: Handling everything related to the individuals employed or contracted by the organisation, including salaries, benefits, and potentially tools for calculating taxes (income tax computations).
+- Justification: This is the human resource aspect of the system. Keeping it separate from organizational and country-specific contexts helps focus on employee-specific operations and data management.
+`Organizations`
+- Responsibilities: Managing data about the company itself, such as its locations, industry classifications, types of employment contracts, asset management, organizational tax calculations, job vacancies etc.
+- Justification: This context encapsulates corporate-level data and operations, which are distinct from the individual employee or country-specific regulations. It would handle the broader aspects of business operations and structural data.
+
+### Seeds
+The `seeds.exs` script was refactored to separate out concerns of
+- obtaining fake data with a FakeData module (inspired by Faker)
+- interacting with the database to populate tables
+- running the script and giving feedback to developers (since this is framed as a repetitive activity)
+
+### Salary statistics
+- the stats are modelled as a resource, that is searched against by either a country or a job_title.
+- There is a single endpoint to expose this, and interacting with the Talent context, since these stats are based on employee salaries (as opposed to salary ranges of job specs which would be implemented in a differnt context).
+
+
+## Notes on thinking and decision-making during the activity
+
+### Feedback
 Hi there, 
 
-Thanks for taking the time to review this home assignment. I'm new to Elixir and Phoenix but have read there docs and have tried to apply best practice. I've explained my thinking below in the hopes that it I can get more rich feedback while learning.
+Thanks for taking the time to review this home assignment. I'm new to Elixir and Phoenix but have read there docs and have tried to apply best practice. I've explained my thinking below in the hopes that it I can get more rich feedback while learning. Please share on the PR directly if you are willing. I'd really appreciate it.
+
+The assigment was a good forcing function to learn Elixir and Phoenix concepts. It gives me a better understanding of the tech stack I'd be joining, rather than only assessing technical ability in an abstract way. The tasks cover the basics of software dev activities. This has been a good way for me to get a lay of the land of the framework.
 
 ### Task 1 Notes
 My thinking here was to follow elixir practices:
@@ -122,11 +160,17 @@ My thinking here was to follow elixir practices:
 - I added a few more data points for the testing. This may be 
 
 ### Task 2 Notes
-- Assumption: it's quite common for people to be paid in a different currency to that of their country of residence, due to either employer or employee preference.
+- Assumption: it's common for people to be paid in a different currency to that of their country of residence, due to either employer or employee preference. Sounds obvious now, but I had a slow moment. This domain context wasn't obvious to me at first when the currency on the employee (I thought it would always be the same as the specified country).
 - I used the Json generator for the Talent context but then noticed the current codebase followed a different pattern, so I adapted the solution to follow the existing style.
-- currencies and countries are bounded. so the selects are ok
-- data integrity, enforcing country_id and currency_id to be valid and set.
+- Seeding: 
+  - I preferred to separate out the concerns.
+  - There is some flexibility in the utilities for changing the volumes of data
+  - for performance, I was attempting to limit duplicating data and calling the db. 
+  - data integrity checks are done in memory for enforcing country_id and currency_id to be valid and set.
+  - batched and bulk inserts write the data, meaning that app level validation checks are skipped.
+  - currencies and countries are bounded. so the selects are ok
 
-TODO:
-- task3 endpoints
-- add readme details. 
+### Task 3 Notes
+- Followed the aggregation functions in the ecto docs.
+- Used the Talent context to expose this rather than the Employee directly.
+- I chose to use a single get endpoint with query parameters
