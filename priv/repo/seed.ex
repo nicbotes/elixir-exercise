@@ -14,6 +14,9 @@
 # Please feel free to update the code if you consider it necessary.
 
 defmodule Exercise.Repo.Seed do
+  @moduledoc """
+  Creating fake data in your database for seeding.
+  """
   alias Exercise.Countries
   alias Exercise.Repo
   alias Exercise.Talent.Employee
@@ -21,6 +24,9 @@ defmodule Exercise.Repo.Seed do
 
   @batch_write_size 1_000
 
+  @doc """
+  Insert large volumes of employees into a database.
+  """
   def bulk_insert_employees(employee_attrs) do
     employee_attrs
     |> Enum.chunk_every(@batch_write_size)
@@ -29,6 +35,9 @@ defmodule Exercise.Repo.Seed do
     end)
   end
 
+  @doc """
+  Generate a large volume of employees data into memory.
+  """
   def generate_bulk_employee_dataset(country_ids, currency_ids, number_of_job_titles \\ 100, number_of_records \\ 10_000) do
     generated_at = DateTime.utc_now() |> DateTime.to_naive() |> NaiveDateTime.truncate(:second)
     jobs = Work.job_titles(number_of_job_titles)
@@ -53,6 +62,9 @@ defmodule Exercise.Repo.Seed do
     end
   end
 
+  @doc """
+  Seed the database with all available currencies
+  """
   def currencies! do
     currency_ids = for currency <- Geofinance.currencies() do
       [name, code, symbol] = currency
@@ -69,7 +81,9 @@ defmodule Exercise.Repo.Seed do
     {:ok, currency_ids}
   end
 
-  # Seed the 12 supported countries
+  @doc """
+  Seed the 12 supported countries
+  """
   def countries! do
     country_ids = for country <- Geofinance.countries() do
       [name, code, currency_code] = country

@@ -5,6 +5,13 @@ defmodule ExerciseWeb.SalaryController do
 
   action_fallback ExerciseWeb.FallbackController
 
+  @doc """
+  Renders a summarized statistics on employee salaries.
+
+  Query parameters available for aggregations on
+  - `job_title`
+  - `country` using the upcase country code
+  """
   def index(conn, params) do
     {:ok, payload} = case params do
       %{"job_title" => job_title} -> Talent.employee_salary_stats_by_job_title(job_title)

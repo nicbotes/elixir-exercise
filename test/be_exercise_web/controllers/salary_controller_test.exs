@@ -1,8 +1,6 @@
 defmodule ExerciseWeb.SalaryControllerTest do
   use ExerciseWeb.ConnCase
 
-  alias Exercise.Talent
-
   setup %{conn: conn} do
     employees = for _ <- 1..10, do: Exercise.TalentFixtures.employee_fixture()
 
@@ -10,7 +8,7 @@ defmodule ExerciseWeb.SalaryControllerTest do
   end
 
   describe "index" do
-    test "job_title search finds the correct stats", %{conn: conn, employees: employees} do
+    test "job_title search finds the correct stats", %{conn: conn} do
       search_term = "some job_title"
       conn = get(conn, Routes.salary_path(conn, :index, job_title: search_term))
 

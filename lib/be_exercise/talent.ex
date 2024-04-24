@@ -108,6 +108,15 @@ defmodule Exercise.Talent do
     Employee.changeset(employee, attrs)
   end
 
+  @doc """
+  Returns salary statistics aggregating for a given `job_title`
+
+  ## Examples
+
+      iex> employee_salary_stats_by_job_title("Software Engineer")
+      {:ok, %{search: %{term: "Software Engineer", on: :job_title}, average: "120"}}
+
+  """
   def employee_salary_stats_by_job_title(field) do
     query = from(e in Employee, where: e.job_title == ^field, select: avg(e.salary))
 
@@ -122,6 +131,15 @@ defmodule Exercise.Talent do
       {:error, exception.message}
   end
 
+  @doc """
+  Returns salary statistics aggregating for a given `country` code
+
+  ## Examples
+
+      iex> employee_salary_stats_by_country("AUS")
+      {:ok, %{search: %{term: "AUS", on: :country}, average: "120", minimum: "100", maximum: "140"}}
+
+  """
   def employee_salary_stats_by_country(country_code) do
     query = from(e in Employee,
                 join: c in assoc(e, :country),
